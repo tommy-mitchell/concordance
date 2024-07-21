@@ -1,4 +1,4 @@
-/* eslint-disable prefer-rest-params, no-multi-assign, no-new-object */
+/* eslint-disable prefer-rest-params, no-multi-assign */
 /*
 Copyright JS Foundation and other contributors <https://js.foundation/>
 
@@ -172,13 +172,21 @@ test('compare sparse arrays', t => {
 });
 
 test('compare plain objects', t => {
-	let object1 = {a: true, b: null, c: 1, d: 'a', e: undefined};
-	let object2 = {a: true, b: null, c: 1, d: 'a', e: undefined};
+	let object1 = {
+		a: true, b: null, c: 1, d: 'a', e: undefined,
+	};
+	let object2 = {
+		a: true, b: null, c: 1, d: 'a', e: undefined,
+	};
 
 	t.true(isEqual(object1, object2));
 
-	object1 = {a: [1, 2, 3], b: new Date(2012, 4, 23), c: /x/, d: {e: 1}};
-	object2 = {a: [1, 2, 3], b: new Date(2012, 4, 23), c: /x/, d: {e: 1}};
+	object1 = {
+		a: [1, 2, 3], b: new Date(2012, 4, 23), c: /x/, d: {e: 1},
+	};
+	object2 = {
+		a: [1, 2, 3], b: new Date(2012, 4, 23), c: /x/, d: {e: 1},
+	};
 
 	t.true(isEqual(object1, object2));
 
@@ -506,9 +514,11 @@ test('compare date objects', t => {
 	t.true(isEqual(date, new Date(2012, 4, 23)));
 	t.true(isEqual(new Date('a'), new Date('b')));
 	t.false(isEqual(date, new Date(2013, 3, 25)));
-	t.false(isEqual(date, {getTime() {
-		return Number(date);
-	}}));
+	t.false(isEqual(date, {
+		getTime() {
+			return Number(date);
+		},
+	}));
 });
 
 test('compare error objects', t => {
@@ -595,7 +605,9 @@ test('compare regexes', t => {
 	t.true(isEqual(/x/gim, /x/gim));
 	t.false(isEqual(/x/gi, /x/g));
 	t.false(isEqual(/x/, /y/));
-	t.false(isEqual(/x/g, {global: true, ignoreCase: false, multiline: false, source: 'x'}));
+	t.false(isEqual(/x/g, {
+		global: true, ignoreCase: false, multiline: false, source: 'x',
+	}));
 });
 
 test('compare sets', t => {
@@ -672,9 +684,11 @@ test('return `true` for like-objects from different realms', t => {
 
 test('return `false` for objects with custom `toString` methods', t => {
 	let primitive;
-	const object = {'toString'() {
-		return primitive;
-	}};
+	const object = {
+		'toString'() {
+			return primitive;
+		},
+	};
 	for (const value of [true, null, 1, 'a', undefined]) {
 		primitive = value;
 		t.false(isEqual(object, value));

@@ -48,7 +48,6 @@ if (typeof BigInt === 'function') {
 }
 
 const diffsBoxedPrimitives = test.macro({
-	// eslint-disable-next-line no-new-object
 	exec: (t, lhs, rhs) => t.snapshot(diff(new Object(lhs), new Object(rhs))),
 	title: (_, lhs, rhs, lhsRepresentation = String(lhs), rhsRepresentation = String(rhs)) => `diffs primitives: ${lhsRepresentation} versus ${rhsRepresentation}`,
 });
@@ -66,7 +65,6 @@ if (typeof BigInt === 'function') {
 }
 
 test('diffs boxed primitives with extra properties', t => {
-	// eslint-disable-next-line no-new-object
 	t.snapshot(diff(new Object('foo'), Object.assign(new Object('foo'), {bar: 'baz'})));
 });
 

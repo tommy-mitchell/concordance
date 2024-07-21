@@ -1,6 +1,8 @@
 import test from 'ava';
 
-import {compareDescriptors, deserialize, describe, diff} from '../index.js';
+import {
+	compareDescriptors, deserialize, describe, diff,
+} from '../index.js';
 
 import {serialization, tree} from './fixtures/pointerSerialization.js';
 

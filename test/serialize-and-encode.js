@@ -3,7 +3,9 @@ import {Buffer} from 'node:buffer';
 
 import test from 'ava';
 
-import {compareDescriptors, describe, diffDescriptors, formatDescriptor} from '../index.js';
+import {
+	compareDescriptors, describe, diffDescriptors, formatDescriptor,
+} from '../index.js';
 import {deserialize, serialize} from '../lib/serialize.js';
 
 import * as customErrorPlugin from './fixtures/customErrorPlugin.js';

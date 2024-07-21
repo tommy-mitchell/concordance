@@ -137,7 +137,6 @@ test('formats registered symbols differently from normal symbols with same descr
 });
 
 const formatsBoxedPrimitive = test.macro({
-	// eslint-disable-next-line no-new-object
 	exec: (t, value) => t.snapshot(format(new Object(value))),
 	title: (valueRepresentation, value) => `formats boxed primitive: ${valueRepresentation || (Object.is(value, -0) ? '-0' : String(value))}`,
 });
@@ -163,7 +162,6 @@ if (typeof BigInt === 'function') {
 }
 
 test('formats boxed primitives with extra properties', t => {
-	// eslint-disable-next-line no-new-object
 	t.snapshot(format(Object.assign(new Object('foo'), {bar: 'baz'})));
 });
 
@@ -244,9 +242,11 @@ test('formats funky objects that are lists and have an iterator', t => {
 		foo: 'bar',
 	};
 	Object.defineProperty(funky, 'length', {value: 2});
-	Object.defineProperty(funky, Symbol.iterator, {* value() {
-		yield 'baz';
-	}});
+	Object.defineProperty(funky, Symbol.iterator, {
+		* value() {
+			yield 'baz';
+		},
+	});
 
 	const actual = format(funky);
 	t.snapshot(actual);
