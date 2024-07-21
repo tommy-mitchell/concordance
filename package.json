@@ -33,7 +33,7 @@
 		"js-string-escape": "^1.0.1",
 		"md5-hex": "^5.0.0",
 		"semver": "^7.6.3",
-		"well-known-symbols": "^2.0.0"
+		"well-known-symbols": "^4.0.0"
 	},
 	"devDependencies": {
 		"@types/node": "18.18",

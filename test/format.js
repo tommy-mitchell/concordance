@@ -73,6 +73,7 @@ for (const value of [
 	Symbol.for('bar'),
 	Symbol.for('bar\nbaz'),
 	Symbol.iterator,
+	Symbol.matchAll,
 ]) {
 	test(formatsPrimitive, value);
 }
