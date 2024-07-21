@@ -1,9 +1,7 @@
 {
 	"all": true,
 	"exclude": [
-		"{coverage,test}/**",
-		".xo-config.cjs",
-		"lib/lodash"
+		"{coverage,test}/**"
 	],
 	"reporter": [
 		"html",
